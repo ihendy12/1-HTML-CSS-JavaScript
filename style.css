@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+    
+}
+
+#skier{
+    width: 50%;
+    position: center;
+}
+
+li{
+    list-style: none;
+  
+}
+
+#nav li{
+    display: inline;
+
+}

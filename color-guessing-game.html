@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Guessing Game</title>
+</head>
+
+<body>
+    <h1> Color Guessing Game</h1>
+    <button type="button" onclick="runGame()">Start Game</button>
+
+
+    <script>
+        const COLORS_ARRAY = ['magenta', 'cyan', 'gold', 'gray', 'green', 'blue', 'orange', 'red', 'white', 'yellow']
+        let guess = '';
+        let correct = false;
+        const targetIndex = Math.floor(Math.random() * (COLORS_ARRAY.length));
+        const target = COLORS_ARRAY[targetIndex];
+
+
+        function runGame() {
+            let numTries = 0
+            
+            do {
+
+                let guess = prompt('I am thinking of one of these colors:\n\n' + COLORS_ARRAY.sort().join(", ") +
+                    '\n\nWhat color am I thinking of?\n')
+                numTries += 1;
+                if (guess === null) {
+                    alert(`You have cancelled the game, goodbye `);
+                    return;
+              
+                }
+                correct = checkGuess(guess, target);
+            } while (!correct);
+
+          
+            alert(`You got it right, Congratulations! It took you ${numTries} times guessing to get it right!`);
+
+        }
+
+
+
+        function checkGuess(guess, target) {
+            let correct = false;
+
+            if (!COLORS_ARRAY.includes(guess)) {
+                alert(`try one of the provided colors`);
+                console.log('not in array')
+
+            } else if (guess > target) {
+                alert(` You guessed HIGHER than the target`)
+                console.log('higher in alphabet')
+
+            } else if (guess < target) {
+                alert(`you guessed LOWER than the target`)
+                console.log('lower in alphabet')
+
+            } else {
+                correct = true;
+                document.body.style.background = guess;
+            }
+         
+            return correct;
+
+        }
+        
+
+    </script>
+</body>
+
+</html>
